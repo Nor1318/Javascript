@@ -12,7 +12,7 @@ let anotherID = Symbol("123")
 console.log(id === anotherID); 
 let bigNumber = 3n // type-> bigInt
 let temp = null // type-> object
-let wife; // type-> undefined
+let girlFriend; // type-> undefined
 
 
 // Referential type (Non Primitive) -> Call By Reference
