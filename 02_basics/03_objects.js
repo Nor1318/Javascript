@@ -33,7 +33,7 @@ const myUser = {
     
  }
  myUser.greeting2 = function(){
-    console.log(`Hello,${myUser.name}`);
+    console.log(`Hello,${this.name}`);
     
  } 
 myUser.greeting()
