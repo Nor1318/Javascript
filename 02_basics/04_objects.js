@@ -50,6 +50,19 @@ console.log(Object.entries(appUser));
 console.log(appUser.hasOwnProperty("emails"));
 
 
+// ----------Object deStructuring-------------
+
+const myObject = {
+    fullname:"Bobby Dahal",
+    age:22,
+    salary:undefined,
+    isActive: false
+}
+
+// console.log(myObject.fullname)
+const {fullname: myname} = myObject
+console.log(myname)
+
 
 
 
