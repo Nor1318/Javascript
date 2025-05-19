@@ -17,7 +17,7 @@
 
  
 // console.log(appUser);
-console.log(appUser.fullname.userfullname.fname); // optional chaining -> Uedi fullname nai xaina vaney?
+console.log(appUser.fullname?.userfullname.fname); // optional chaining -> Uedi fullname nai xaina vaney?
 
 const obj1 = {1:"a",2:"b"}
 const obj2 = {3:"a",4:"b"}
