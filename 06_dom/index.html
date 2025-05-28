@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom-Practice</title>
+  </head>
+  <body>
+    <h1 id="header-1" data-info="Hello">Dom Practice</h1>
+    <h2 id="intro">Red</h2>
+    <p class="para">hello world</p>
+    <p class="para">hello world</p>
+    <p class="para">hello world</p>
+    <p class="para">helo world</p>
+    <button class="click-me">Click</button>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </body>
+</html>
+<!--  Attempted Dom Questions -->
+<!-- 1.
+Q: Select the <h1> element by ID and change its text content to "Welcome to Dom Practice".
+A:
+
+javascript
+Copy
+Edit
+document.getElementById('header-1').innerText = "Welcome to Dom Practice"
+2.
+Q: Select all <p> tags using querySelectorAll and log them.
+A:
+
+javascript
+Copy
+Edit
+document.querySelectorAll('p')
+3.
+Q: Select the element with id "intro" and change its text color to blue.
+A:
+
+javascript
+Copy
+Edit
+const colorChange = document.getElementById('intro') 
+colorChange.style.color = "Blue"
+4.
+Q: Select the button with class "click-me" and change its background color to green.
+A:
+
+javascript
+Copy
+Edit
+const btn = document.querySelector('.click-me')
+btn.style.backgroundColor = "green"
+5.
+Q: Select all elements with class "box" and log their count.
+A:
+
+javascript
+Copy
+Edit
+const countDiv = document.getElementsByClassName('box')
+console.log(countDiv.length)
+6.
+Q: Retrieve the value of the data-info attribute of the element with id "header-1".
+A:
+
+javascript
+Copy
+Edit
+document.getElementById('header-1').getAttribute("data-info")
+7.
+Q: Select the first <li> element and change its text to "Updated Item".
+A:
+
+javascript
+Copy
+Edit
+document.querySelector("li").innerText = "Updated Item"
+8.
+Q: Replace the inner HTML of the element with id "changeMe" with "New Content".
+A:
+
+javascript
+Copy
+Edit
+document.getElementById('changeMe').innerHTML = "New Content"
+9.
+Q: (Skipped due to event handling not covered yet)
+
+10.
+Q: Select all elements with class "para" and change their background color to green.
+A:
+
+javascript
+Copy
+Edit
+const nodeLoop = document.querySelectorAll('.para')
+nodeLoop.forEach((p)=>{
+    p.style.backgroundColor = "green"
+}) -->
