@@ -1,0 +1,164 @@
+1️⃣ Basic Element Creation
+<!-- ✅ Task: -->
+<!-- Create a new div element using JavaScript. -->
+<!-- Add some text inside it. -->
+<!-- Append it to the body of the document. -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Practice</title>
+  </head>
+  <body></body>
+  <script>
+    const div = document.createElement("div");
+    const texts = document.createTextNode("Hello World!");
+    div.append(texts);
+    document.body.append(div);
+  </script>
+</html> -->
+
+<!-- 2 Parent Selection and Adding Children
+✅ Task:
+
+Select a div element with id container.
+
+Create a new paragraph (<p>) element and set some text content.
+
+Append the paragraph to the container div. -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container"></div>
+  </body>
+  <script>
+    const cont = document.querySelector("#container");
+    const para = document.createElement("p");
+    const values = document.createTextNode("lorem forem chorem.");
+    para.append(values);
+    cont.appendChild(para);
+    console.log(cont.children);
+  </script>
+</html> -->
+
+<!-- 📝 3️⃣ User Interaction
+✅ Task:
+
+Add a button to the page with id add-item.
+
+Add a ul with id item-list.
+
+When the button is clicked, create a new li element with some text and add it to the list. -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const btn = document.createElement("button");
+    btn.setAttribute("id", "add-item");
+    btn.style.backgroundColor = "green";
+    btn.style.color = "white";
+    btn.innerHTML = "Click me";
+    btn.style.fontSize = "15px";
+    btn.style.padding = "25px";
+    const u = document.createElement("ul");
+    u.setAttribute("id", "item-list");
+    document.body.append(u, btn);
+       btn.addEventListener('click', function() {
+    const l = document.createElement("li")
+    l.innerHTML = "list"
+    u.appendChild(l)
+    
+});
+  </script>
+</html> -->
+
+<!-- 📝 4️⃣ Comment Section
+✅ Task:
+
+Add an input field for a user to type a comment and a button to submit it.
+
+When the button is clicked, create a new paragraph (<p>) containing the comment text 
+    and add it to a div with id comments.
+
+Clear the input after submission. -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Comment Section</h2>
+    <input type="text" id="comment-input" placeholder="Your comment">
+    <button id="submit-comment">Submit</button>
+    <div id="comments"></div>
+    <script>
+       const btn = document.getElementById("submit-comment")
+       btn.addEventListener("click",function(){
+            const cmt = document.getElementById("comment-input").value
+            console.log(cmt)
+           const para =  document.createElement("p")
+           para.innerHTML = cmt
+           const findDiv = document.getElementById("comments")
+           findDiv.append(para)
+
+       })
+    </script>
+</body>
+</html> -->
+
+<!-- 📝 5️⃣ Stretch: Dynamic Card Generator
+✅ Task:
+
+Create a button called "Add Card".
+
+When clicked, create a div (representing a card) containing a heading (<h3>), paragraph, 
+    and a button inside.
+
+Append the card to a container div. -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Card</title>
+  </head>
+  <body>
+    <button id="add-card">Add Card</button>
+    <div id="card-container"></div>
+    <script>
+      const btn = document.getElementById("add-card");
+      btn.addEventListener("click", () => {
+        const div = document.createElement("div");
+        const h = document.createElement("h3");
+        const p = document.createElement("p");
+        const bt = document.createElement("button");
+        div.style.backgroundColor = "blue";
+        div.style.padding = "20px";
+        div.style.margin = "10px";
+        h.innerHTML = "Card";
+        p.innerHTML = "lorem horem chorem.";
+        bt.innerHTML = "Click me";
+        document.getElementById("card-container").append(div);
+        div.append(p, h, bt);
+      });
+    </script>
+  </body>
+</html> -->
+
