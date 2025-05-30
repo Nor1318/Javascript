@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Color Changer App</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: white;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      p {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .color-grid {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .color-block {
+        width: 100px;
+        height: 100px;
+        border: 3px solid black;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .color-block:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .reset-block {
+        background-color: white;
+        border: 3px solid black;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎨 Color Changer App</h1>
+
+    <div class="color-grid">
+      <div
+        class="color-block"
+        style="background-color: red"
+        data-color="red"
+      ></div>
+      <div
+        class="color-block"
+        style="background-color: green"
+        data-color="green"
+      ></div>
+      <div
+        class="color-block"
+        style="background-color: blue"
+        data-color="blue"
+      ></div>
+      <div
+        class="color-block"
+        style="background-color: yellow"
+        data-color="yellow"
+      ></div>
+      <div class="color-block reset-block" id="random-block" data-color="white">
+        Random
+      </div>
+    </div>
+
+    <p>
+      🖱️ Try clicking on the blocks to change the background color! The last
+      block resets it to white.
+    </p>
+
+    <script>
+      const div = document.querySelectorAll(".color-block");
+
+      div.forEach((item) => {
+        item.addEventListener("click", function () {
+          if (item.id == "random-block") {
+            let randomRed = Math.round(Math.random() * 255);
+            let randomGreen = Math.round(Math.random() * 255);
+            let randomBlue = Math.round(Math.random() * 255);
+            document.body.style.backgroundColor =
+              "rgb(" + randomRed + "," + randomGreen + "," + randomBlue + ")";
+          } else {
+            document.body.style.backgroundColor = item.dataset.color;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

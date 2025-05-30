@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>🎯 Number Guessing Game</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .game-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        width: 320px;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+      }
+
+      .game-instruction {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        color: #555;
+      }
+
+      form {
+        margin-bottom: 20px;
+      }
+
+      input[type="number"] {
+        width: 80%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 2px solid #333;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .info-box {
+        background-color: #f8f9fa;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      .result-message {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #ff5722;
+      }
+
+      .feedback-message {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #007bff;
+        margin-top: 10px;
+        min-height: 24px; /* Ensures space is reserved for messages */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>🎯 Number Guessing Game</h1>
+      <div class="game-instruction" id="instruction">
+        Try guessing a number between 1-100 in
+        <span id="currentAttempt">1</span> attempt!
+      </div>
+      <form id="guessForm">
+        <input type="number" id="userGuess" placeholder="Enter your guess" />
+        <br />
+        <button type="submit">Submit Guess</button>
+      </form>
+
+      <div class="info-box" id="attemptsLeft">
+        Attempts Left: <span id="remainingGuess"> 10</span>
+      </div>
+      <div class="info-box" id="previousGuesses">
+        Previous Guesses: <span id="prevGuess"> None</span>
+      </div>
+
+      <!-- 💬 New feedback message area -->
+      <div class="feedback-message" id="feedbackMessage"></div>
+
+      <div class="result-message" id="resultMessage"></div>
+    </div>
+
+    <script>
+      const form = document.querySelector("form");
+      const randomNumber = Math.floor(Math.random() * (100 - 1 + 1));
+      console.log(randomNumber);
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const userGuess = document.getElementById("userGuess").value;
+        if (
+          userGuess == "" ||
+          isNaN(userGuess) ||
+          userGuess <= 0 ||
+          userGuess > 100
+        ) {
+          alert("Please Enter a valid Number.");
+        } else {
+          const feedbackMsg = document.getElementById("feedbackMessage");
+          if (userGuess < randomNumber) {
+            document.getElementById("userGuess").value = "";
+            feedbackMsg.textContent = `Enter Number Greater than Guess`;
+          } else if (userGuess > randomNumber) {
+            document.getElementById("userGuess").value = "";
+            feedbackMsg.textContent = `Enter Number Less than Guess`;
+          } else {
+            feedbackMsg.style.color = "#ff5722";
+            feedbackMsg.textContent = `Correct The number is ${randomNumber} ✅`;
+            return;
+          }
+          const remainingGuess =
+            document.getElementById("remainingGuess").textContent;
+          let remainingGuessInt = parseInt(remainingGuess);
+          if (remainingGuessInt == 0) {
+            feedbackMsg.style.color = "red";
+            feedbackMsg.textContent = `Attempt Finished.The number is ${randomNumber} `;
+          } else {
+            remainingGuessInt--;
+            document.getElementById("remainingGuess").textContent =
+              remainingGuessInt;
+            document.getElementById("prevGuess").textContent = userGuess;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

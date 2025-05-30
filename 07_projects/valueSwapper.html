@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>🔄 Value Swapper App</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f4f8;
+      }
+
+      .swapper-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 300px;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .swapper-container input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #333;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+
+      .swapper-container button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .swapper-container button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .result {
+        margin-top: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="swapper-container">
+      <h1>🔄 Value Swapper</h1>
+      <form id="swapForm">
+        <input type="text" id="value1" placeholder="Enter first value" />
+        <input type="text" id="value2" placeholder="Enter second value" />
+        <button type="submit">Swap Values</button>
+      </form>
+      <div class="result" id="swapResult"></div>
+      <div class="result" id="swapError"></div>
+    </div>
+  </body>
+  <script>
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const firstValue = document.querySelector("#value1").value;
+
+      const secondValue = document.querySelector("#value2").value;
+      const swapErr = document.querySelector("#swapError");
+      if (firstValue == "" || secondValue == "") {
+        console.log(firstValue);
+        console.log(secondValue);
+        swapErr.innerHTML = "Field Cannot Be Empty.";
+      } else {
+        if (swapErr != "") {
+          swapErr.innerHTML = "";
+        }
+        document.querySelector("#value1").value = secondValue;
+        document.querySelector("#value2").value = firstValue;
+      }
+    });
+  </script>
+</html>
