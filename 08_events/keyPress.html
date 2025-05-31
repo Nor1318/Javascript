@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Presser Checker</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        text-align: center;
+      }
+
+      .message {
+        font-size: 2rem;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message">Press any key and see magic ✨</div>
+  </body>
+
+  <script>
+    window.addEventListener("keydown", function (e) {
+      const value = e.key === " " ? "Space" : e.key;
+      document.querySelector(".message").innerHTML = value;
+    });
+  </script>
+</html>

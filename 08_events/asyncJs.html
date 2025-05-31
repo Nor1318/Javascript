@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Bobby Dahal</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    let interval;
+    document.getElementById("start").addEventListener("click", function () {
+      interval = setInterval(
+        function (str) {
+          console.log(str);
+        },
+        2000,
+        "Hi"
+      );
+    });
+    document.getElementById("stop").addEventListener("click", function () {
+      clearInterval(interval);
+      console.log("Done");
+    });
+  </script>
+</html>

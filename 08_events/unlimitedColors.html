@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Background Changer</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+        transition: background-color 0.5s ease;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: auto;
+      }
+
+      h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+      }
+
+      .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      button {
+        padding: 12px 24px;
+        font-size: 1em;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      #start {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      #stop {
+        background-color: #f44336;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Background Color Changer</h1>
+      <p>
+        Click <strong>Start</strong> to change the background color every
+        second. Click <strong>Stop</strong> to stop it.
+      </p>
+      <div class="button-group">
+        <button id="start" name="backgroundControl">Start</button>
+        <button id="stop" name="backgroundControl">Stop</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const start = document.getElementById("start");
+    const stop = document.getElementById("stop");
+    let bgInterval;
+
+    start.addEventListener("click", function () {
+      if (!bgInterval) {
+        bgInterval = setInterval(function () {
+          const randomRed = randomNumber();
+          const randomBlue = randomNumber();
+          const randomGreen = randomNumber();
+          document.body.style.backgroundColor =
+            "rgb(" + randomRed + "," + randomGreen + "," + randomBlue + ")";
+        }, 1000);
+      }
+    });
+    stop.addEventListener("click", function () {
+      clearInterval(bgInterval);
+      bgInterval = null;
+    });
+    function randomNumber() {
+      const randomNumber = Math.floor(Math.random() * 256);
+      return randomNumber;
+    }
+  </script>
+</html>
