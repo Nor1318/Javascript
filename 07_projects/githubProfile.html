@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub User Card</title>
+    <link rel="stylesheet" href="githubProfile.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>GitHub User Finder</h1>
+      <form id="github-form">
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter GitHub username"
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      <div id="error-message" class="error-message hidden">
+        User not found. Please check the username and try again.
+      </div>
+
+      <div class="user-card hidden" id="user-card">
+        <img src="" alt="User Avatar" id="avatar" />
+        <h2 id="name">User Name</h2>
+        <p id="bio">User Bio</p>
+        <p id="repos">Public Repos: <span id="repoCount"> 0</span></p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const requestUrl = "https://api.github.com/users/";
+    const gitForm = document.querySelector("form");
+    const userInput = document.querySelector("#username");
+    const cardDiv = document.querySelector("#user-card");
+    gitForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const userValue = userInput.value;
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", `${requestUrl}${userValue}`);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          const responseJson = JSON.parse(this.responseText);
+          if (xhr.status === 404) {
+            cardDiv.classList.add("hidden");
+            document.querySelector("#error-message").classList.remove("hidden");
+          } else {
+            document
+              .getElementById("avatar")
+              .setAttribute("src", responseJson.avatar_url);
+            document.getElementById("repoCount").innerHTML =
+              responseJson.public_repos;
+            document.getElementById("name").innerHTML =
+              responseJson.name ?? "No name";
+            document.getElementById("bio").innerHTML =
+              responseJson.bio ?? "No Bio";
+            document.querySelector("#error-message").classList.add("hidden");
+            cardDiv.classList.remove("hidden");
+            userInput.value = "";
+          }
+        }
+      };
+      xhr.send();
+    });
+  </script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const requestUrl = "https://api.github.com/users/nor1318";
+    const requestHub = new XMLHttpRequest();
+    requestHub.onreadystatechange = function () {
+      if (requestHub.readyState === 4) {
+        const jsonValue = JSON.parse(this.responseText);
+        console.log(jsonValue.login);
+      }
+    };
+    requestHub.open("GET", requestUrl);
+    requestHub.send();
+  </script>
+</html>
